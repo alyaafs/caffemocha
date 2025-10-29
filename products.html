@@ -215,14 +215,12 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
-  let cart = [];
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
   function updateCartDisplay() {
     const cartCount = document.getElementById("cart-count");
     const cartItems = document.getElementById("cartItems");
     const cartTotal = document.getElementById("cartTotal");
-   
-  
 
     cartItems.innerHTML = "";
     let total = 0;
@@ -236,7 +234,7 @@
       const row = document.createElement("div");
       row.classList.add("d-flex", "justify-content-between", "align-items-center", "mb-2");
       row.innerHTML = `
-        <span>${item.name} x${item.quantity}</span>
+        <span>${item.name} (${item.size}) x${item.quantity}</span>
         <div>
           <span>Rp${itemTotal.toLocaleString("id-ID")}</span>
           <button class="btn btn-sm btn-outline-danger ms-2" onclick="removeItem(${index})">x</button>
@@ -247,6 +245,7 @@
 
     cartCount.textContent = totalItems;
     cartTotal.textContent = `Total: Rp${total.toLocaleString("id-ID")}`;
+    localStorage.setItem("cart", JSON.stringify(cart));
   }
 
   function removeItem(index) {
@@ -270,21 +269,38 @@
     const cartModal = new bootstrap.Modal(document.getElementById("cartModal"));
     cartModal.show();
   });
-</script>
-<script>
-function addToCartWithVariant(name, price, variantSelectId) {
-  const variant = document.getElementById(variantSelectId).value;
 
-  const item = {
-    name: `${name} (${variant})`,
-    price: price
-  };
+  function addToCartWithVariant(name, basePrice, variantSelectId, sizeSelectId) {
+    const variant = document.getElementById(variantSelectId).value;
+    const size = document.getElementById(sizeSelectId).value;
 
-  cart.push(item);
-  localStorage.setItem('cart', JSON.stringify(cart));
+    // Harga tambahan sesuai ukuran
+    let price = basePrice;
+    if (size === "Large") {
+      price += 6000; // Bisa kamu ganti sesuai harga kamu
+    }
+
+    // Cek jika produk + variant + size sudah ada → tambah quantity
+    const existingItem = cart.find(item => item.name === name && item.variant === variant && item.size === size);
+
+    if (existingItem) {
+      existingItem.quantity += 1;
+    } else {
+      cart.push({
+        name,
+        variant,
+        size,
+        price,
+        quantity: 1
+      });
+    }
+
+    updateCartDisplay();
+  }
+
   updateCartDisplay();
-}
 </script>
+
   
 </body>
 </html>
