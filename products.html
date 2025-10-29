@@ -56,6 +56,19 @@
         </div>
       </div>
 
+      <!-- Matcha Latte -->
+      <div class="col-md-4 mb-4">
+        <div class="card p-3 shadow-sm">
+          <h5>Matcha Latte</h5>
+          <p>Rp25.000</p>
+          <p class="text-muted">Varian: Cold Only</p>
+
+          <button class="btn btn-dark mt-3" onclick="addToCart('Matcha Latte', 25000, null, 'Cold')">
+            Add to Cart
+          </button>
+        </div>
+      </div>
+      
       <!-- Cookies & Cream Coffee -->
       <div class="col-md-4 mb-4">
         <div class="card p-3 shadow-sm">
@@ -74,7 +87,12 @@
         <div class="card p-3 shadow-sm">
           <h5>Iced Coffee Gula Aren</h5>
           <p>Rp20.000</p>
-          <p class="text-muted">Varian: Cold Only</p>
+          
+          <label class="form-label">Varian</label>
+          <select id="variant-2" class="form-select">
+            <option value="Hot">Hot</option>
+            <option value="Cold">Cold</option>
+          </select>
 
           <button class="btn btn-dark mt-3" onclick="addToCart('Iced Coffee Gula Aren', 20000, null, 'Cold')">
             Add to Cart
