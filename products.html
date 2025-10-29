@@ -217,11 +217,6 @@
 <script>
   let cart = [];
 
-  function addToCartWithVariant(productName, price, variantSelectId) {
-  const variant = document.getElementById(variantSelectId).value;
-  addToCart(`${productName} (${variant})`, price);
-  }
-
   function updateCartDisplay() {
     const cartCount = document.getElementById("cart-count");
     const cartItems = document.getElementById("cartItems");
