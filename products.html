@@ -1,260 +1,188 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>MOCHA CAFFE</title>
-
+  <meta charset="UTF-8">
+  <title>Mocha Caffe</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="css/styles.css" rel="stylesheet" />
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
 </head>
 
-<body>
+<body class="p-4">
 
-<header class="text-center py-5">
-  <h1 class="fw-bold">MOCHA CAFFE</h1>
-  <p class="text-muted">Whatever your mood, there's a Mocha for it.</p>
-</header>
-
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark px-4">
-  <a class="navbar-brand text-uppercase fw-bold" href="#">Mocha Caffe</a>
-  <div class="ms-auto">
-    <button class="btn btn-outline-light position-relative" id="cart-btn">
-      <i class="bi bi-cart3 fs-5"></i>
+  <!-- HEADER -->
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h3>Mocha Caffe</h3>
+    <button class="btn btn-dark position-relative" id="cart-btn">
+      Cart
       <span id="cart-count" class="badge bg-danger position-absolute top-0 start-100 translate-middle">0</span>
     </button>
   </div>
-</nav>
 
-<!-- MODAL KERANJANG -->
-<div class="modal fade" id="cartModal" tabindex="-1">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">🛒 Your Cart</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+  <div class="container">
+    <div class="row">
+
+      <!-- Mocha Latte -->
+      <div class="col-md-4 mb-4">
+        <div class="card p-3 shadow-sm">
+          <h5>Mocha Latte</h5>
+          <p>Rp22.000</p>
+
+          <label class="form-label">Varian</label>
+          <select id="variant-1" class="form-select">
+            <option value="Hot">Hot</option>
+            <option value="Cold">Cold</option>
+          </select>
+
+          <button class="btn btn-dark mt-3" onclick="addToCart('Mocha Latte', 22000, 'variant-1')">
+            Add to Cart
+          </button>
+        </div>
       </div>
-      <div class="modal-body" id="cartItems"></div>
-      <div class="modal-footer">
-        <h6 class="me-auto" id="cartTotal">Total: Rp0</h6>
-        <button class="btn btn-success" id="checkoutBtn">Checkout</button>
+
+      <!-- Caramel Creamy Latte -->
+      <div class="col-md-4 mb-4">
+        <div class="card p-3 shadow-sm">
+          <h5>Caramel Creamy Latte</h5>
+          <p>Rp24.000</p>
+
+          <label class="form-label">Varian</label>
+          <select id="variant-2" class="form-select">
+            <option value="Hot">Hot</option>
+            <option value="Cold">Cold</option>
+          </select>
+
+          <button class="btn btn-dark mt-3" onclick="addToCart('Caramel Creamy Latte', 24000, 'variant-2')">
+            Add to Cart
+          </button>
+        </div>
+      </div>
+
+      <!-- Cookies & Cream Coffee -->
+      <div class="col-md-4 mb-4">
+        <div class="card p-3 shadow-sm">
+          <h5>Cookies & Cream Coffee</h5>
+          <p>Rp26.000</p>
+          <p class="text-muted">Varian: Cold Only</p>
+
+          <button class="btn btn-dark mt-3" onclick="addToCart('Cookies & Cream Coffee', 26000, null, 'Cold')">
+            Add to Cart
+          </button>
+        </div>
+      </div>
+
+      <!-- Iced Coffee Gula Aren -->
+      <div class="col-md-4 mb-4">
+        <div class="card p-3 shadow-sm">
+          <h5>Iced Coffee Gula Aren</h5>
+          <p>Rp20.000</p>
+          <p class="text-muted">Varian: Cold Only</p>
+
+          <button class="btn btn-dark mt-3" onclick="addToCart('Iced Coffee Gula Aren', 20000, null, 'Cold')">
+            Add to Cart
+          </button>
+        </div>
+      </div>
+
+      <!-- Iced Mocha Frappe -->
+      <div class="col-md-4 mb-4">
+        <div class="card p-3 shadow-sm">
+          <h5>Iced Mocha Frappe</h5>
+          <p>Rp25.000</p>
+          <p class="text-muted">Varian: Cold Only</p>
+
+          <button class="btn btn-dark mt-3" onclick="addToCart('Iced Mocha Frappe', 25000, null, 'Cold')">
+            Add to Cart
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- CART MODAL -->
+  <div class="modal fade" id="cartModal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content p-2">
+        <div class="modal-header">
+          <h5>Keranjang</h5>
+          <button class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <div id="cartItems"></div>
+          <h5 id="cartTotal" class="mt-3"></h5>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-dark" id="checkoutBtn">Checkout</button>
+        </div>
       </div>
     </div>
   </div>
-</div>
-
-<section class="container py-5">
-  <div class="row g-4">
-
-    <!-- 1. Mocha Latte -->
-    <div class="col-md-4">
-      <div class="card p-3 shadow-sm">
-        <img src="assets/img/products-01.jpg" class="card-img-top rounded">
-        <h5 class="mt-3 fw-bold">Mocha Latte</h5>
-        <p>Perpaduan kopi arabika & cokelat premium dengan rasa lembut dan comforting.</p>
-        <p class="fw-semibold">Rp22.000</p>
-
-        <label class="fw-semibold">Varian:</label>
-        <select class="form-select mb-2 variant-select">
-          <option value="Hot">Hot</option>
-          <option value="Cold">Cold</option>
-        </select>
-
-        <label class="fw-semibold">Ukuran:</label>
-        <select class="form-select mb-3 size-select">
-          <option value="Medium" data-add="0">Medium</option>
-          <option value="Large" data-add="6000">Large (+6K)</option>
-        </select>
-
-        <button class="btn btn-dark w-100 add-cart-btn" data-name="Mocha Latte" data-price="22000">Add to Cart</button>
-      </div>
-    </div>
-
-
-    <!-- 2. Caramel Creamy Latte -->
-    <div class="col-md-4">
-      <div class="card p-3 shadow-sm">
-        <img src="assets/img/products-02.jpg" class="card-img-top rounded">
-        <h5 class="mt-3 fw-bold">Caramel Creamy Latte</h5>
-        <p>Susu creamy dengan karamel lembut. Sweet, smooth, comforting.</p>
-        <p class="fw-semibold">Rp24.000</p>
-
-        <select class="form-select mb-2 variant-select">
-          <option value="Hot">Hot</option>
-          <option value="Cold">Cold</option>
-        </select>
-
-        <select class="form-select mb-3 size-select">
-          <option value="Medium" data-add="0">Medium</option>
-          <option value="Large" data-add="6000">Large (+6K)</option>
-        </select>
-
-        <button class="btn btn-dark w-100 add-cart-btn" data-name="Caramel Creamy Latte" data-price="24000">Add to Cart</button>
-      </div>
-    </div>
-
-
-    <!-- 3. Matcha Latte -->
-    <div class="col-md-4">
-      <div class="card p-3 shadow-sm">
-        <img src="assets/img/products-03.jpg" class="card-img-top rounded">
-        <h5 class="mt-3 fw-bold">Matcha Latte</h5>
-        <p>Matcha premium, creamy, clean. Fresh mood booster.</p>
-        <p class="fw-semibold">Rp25.000</p>
-
-        <select class="form-select mb-2 variant-select">
-          <option value="Hot">Hot</option>
-          <option value="Cold">Cold</option>
-        </select>
-
-        <select class="form-select mb-3 size-select">
-          <option value="Medium" data-add="0">Medium</option>
-          <option value="Large" data-add="6000">Large (+6K)</option>
-        </select>
-
-        <button class="btn btn-dark w-100 add-cart-btn" data-name="Matcha Latte" data-price="25000">Add to Cart</button>
-      </div>
-    </div>
-
-
-    <!-- 4. Cookies & Cream Coffee -->
-    <div class="col-md-4">
-      <div class="card p-3 shadow-sm">
-        <img src="assets/img/products-04.jpg" class="card-img-top rounded">
-        <h5 class="mt-3 fw-bold">Cookies & Cream Coffee</h5>
-        <p>Kopi creamy dengan crumble cookies. Playful & bold.</p>
-        <p class="fw-semibold">Rp30.000</p>
-
-        <select class="form-select mb-2 variant-select">
-          <option value="Cold">Cold</option>
-        </select>
-
-        <select class="form-select mb-3 size-select">
-          <option value="Medium" data-add="0">Medium</option>
-          <option value="Large" data-add="6000">Large (+6K)</option>
-        </select>
-
-        <button class="btn btn-dark w-100 add-cart-btn" data-name="Cookies & Cream Coffee" data-price="30000">Add to Cart</button>
-      </div>
-    </div>
-
-
-    <!-- 5. Coffee Gula Aren -->
-    <div class="col-md-4">
-      <div class="card p-3 shadow-sm">
-        <img src="assets/img/products-05.jpg" class="card-img-top rounded">
-        <h5 class="mt-3 fw-bold">Coffee Gula Aren</h5>
-        <p>Kopi bold + gula aren asli. Manis lembut, aromatik, everyday coffee.</p>
-        <p class="fw-semibold">Rp21.000</p>
-
-        <select class="form-select mb-2 variant-select">
-          <option value="Hot">Hot</option>
-          <option value="Cold">Cold</option>
-        </select>
-
-        <select class="form-select mb-3 size-select">
-          <option value="Medium" data-add="0">Medium</option>
-          <option value="Large" data-add="6000">Large (+6K)</option>
-        </select>
-
-        <button class="btn btn-dark w-100 add-cart-btn" data-name="Coffee Gula Aren" data-price="21000">Add to Cart</button>
-      </div>
-    </div>
-
-
-    <!-- 6. Iced Mocha Frappe -->
-    <div class="col-md-4">
-      <div class="card p-3 shadow-sm">
-        <img src="assets/img/products-06.jpg" class="card-img-top rounded">
-        <h5 class="mt-3 fw-bold">Iced Mocha Frappe</h5>
-        <p>Kopi + coklat + susu diblender creamy dingin. Fresh & sweet.</p>
-        <p class="fw-semibold">Rp26.000</p>
-
-        <select class="form-select mb-2 variant-select">
-          <option value="Cold">Cold</option>
-        </select>
-
-        <select class="form-select mb-3 size-select">
-          <option value="Medium" data-add="0">Medium</option>
-          <option value="Large" data-add="6000">Large (+6K)</option>
-        </select>
-
-        <button class="btn btn-dark w-100 add-cart-btn" data-name="Iced Mocha Frappe" data-price="26000">Add to Cart</button>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<footer class="text-center py-4 text-muted">
-  © Mocha Caffe 2025
-</footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
-let cart = JSON.parse(localStorage.getItem("cart")) || [];
+let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
 function updateCartDisplay() {
+  const cartCount = document.getElementById("cart-count");
   const cartItems = document.getElementById("cartItems");
   const cartTotal = document.getElementById("cartTotal");
-  const cartCount = document.getElementById("cart-count");
 
   cartItems.innerHTML = "";
-  let total = 0, totalItems = 0;
+  let total = 0;
+  let totalItems = 0;
 
-  cart.forEach((item, i) => {
-    let sub = item.price * item.quantity;
-    total += sub; totalItems += item.quantity;
+  cart.forEach((item, index) => {
+    const itemTotal = item.price * item.quantity;
+    total += itemTotal;
+    totalItems += item.quantity;
 
     cartItems.innerHTML += `
-      <div class="d-flex justify-content-between mb-2">
-        <span>${item.name} (${item.variant}, ${item.size}) x${item.quantity}</span>
+      <div class="d-flex justify-content-between align-items-center mb-2">
+        <span>${item.name} ${item.variant ? '(' + item.variant + ')' : ''} x${item.quantity}</span>
         <div>
-          Rp${sub.toLocaleString("id-ID")}
-          <button class="btn btn-sm btn-danger ms-2" onclick="removeItem(${i})">x</button>
+          <span>Rp${itemTotal.toLocaleString("id-ID")}</span>
+          <button class="btn btn-sm btn-outline-danger ms-2" onclick="removeItem(${index})">x</button>
         </div>
-      </div>`;
+      </div>
+    `;
   });
 
   cartCount.textContent = totalItems;
-  cartTotal.textContent = Total: Rp${total.toLocaleString("id-ID")};
-  localStorage.setItem("cart", JSON.stringify(cart));
+  cartTotal.textContent = `Total: Rp${total.toLocaleString("id-ID")}`;
+  localStorage.setItem('cart', JSON.stringify(cart));
 }
 
-function removeItem(i) {
-  cart.splice(i, 1);
+function removeItem(index) {
+  cart.splice(index, 1);
   updateCartDisplay();
 }
 
-document.querySelectorAll(".add-cart-btn").forEach(btn => {
-  btn.addEventListener("click", function(){
-    let name = this.dataset.name;
-    let price = parseInt(this.dataset.price);
-    let variant = this.parentElement.querySelector(".variant-select").value;
-    let sizeSelect = this.parentElement.querySelector(".size-select");
-    let size = sizeSelect.value;
-    let add = parseInt(sizeSelect.selectedOptions[0].dataset.add);
-    price += add;
+function addToCart(name, price, variantSelectId, fixedVariant = null) {
+  const variant = fixedVariant || document.getElementById(variantSelectId).value;
 
-    const exist = cart.find(i => i.name === name && i.variant === variant && i.size === size);
-    if(exist) exist.quantity++;
-    else cart.push({name, variant, size, price, quantity: 1});
-    
-    updateCartDisplay();
-  });
+  const existingItem = cart.find(item => item.name === name && item.variant === variant);
+
+  if (existingItem) {
+    existingItem.quantity += 1;
+  } else {
+    cart.push({ name, price, variant, quantity: 1 });
+  }
+
+  updateCartDisplay();
+}
+
+document.getElementById("checkoutBtn").addEventListener("click", () => {
+  if (cart.length === 0) return alert("Keranjang kosong.");
+  alert("Pesanan diproses.");
+  cart = [];
+  localStorage.removeItem('cart');
+  updateCartDisplay();
+  bootstrap.Modal.getInstance(document.getElementById("cartModal")).hide();
 });
 
-document.getElementById("cart-btn").onclick = () =>
+document.getElementById("cart-btn").addEventListener("click", () => {
   new bootstrap.Modal(document.getElementById("cartModal")).show();
-
-document.getElementById("checkoutBtn").onclick = () => {
-  if(cart.length === 0) return alert("Keranjang kosong.");
-  alert("Pesanan diproses ✅");
-  cart = [];
-  updateCartDisplay();
-};
+});
 
 updateCartDisplay();
 </script>
