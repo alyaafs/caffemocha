@@ -70,10 +70,21 @@
       </div>
       <div class="col-md-6">
         <h2 class="section-heading mb-3">Mocha Latte</h2>
-        <p>Nikmati sensasi mocha klasik dengan perpaduan sempurna antara kopi arabika pilihan dan cokelat premium Belgia.</p>
+        <p>Perpaduan seimbang antara kopi arabika pilihan dan cokelat premium. Rasa kopi tetap terasa, tapi lembut dengan sentuhan manis cokelat yang bikin hangat dan comforting.</p>
         <p><strong>Harga:</strong> Rp22.000</p>
-        <button class="btn btn-outline-dark mt-auto" onclick="addToCart('Mocha Latte', 22000)">Add to Cart</button>
-      </div>
+        <p><strong>Ukuran:</strong> Medium</p>
+        
+        <!-- Dropdown Varian -->
+    <label class="fw-bold">Varian:</label>
+    <select class="form-select w-50 mb-3" id="variant-mocha-latte">
+      <option value="Hot">Hot</option>
+      <option value="Cold">Cold</option>
+    </select>
+
+    <button class="btn btn-outline-dark" onclick="addToCartWithVariant('Mocha Latte', 22000, 'variant-mocha-latte')">
+      Add to Cart
+    </button>
+  </div>
     </div>
 
     <!-- Product 2 -->
@@ -83,10 +94,21 @@
       </div>
       <div class="col-md-6">
         <h2 class="section-heading mb-3">Caramel Creamy Latte</h2>
-        <p>Minuman creamy yang memanjakan lidah di setiap tegukan. Dibuat dari campuran susu segar, cokelat lembut, dan aroma kopi halus.</p>
+        <p>Susu creamy yang dipadu dengan karamel lembut, menghasilkan rasa manis-asin tipis yang pas. Cocok buat kamu yang suka minuman manis tapi tetap smooth.</p>
         <p><strong>Harga:</strong> Rp24.000</p>
-        <button class="btn btn-outline-dark mt-auto" onclick="addToCart('Caramel Creamy Latte', 24000)">Add to Cart</button>
-      </div>
+        <p><strong>Ukuran:</strong> Medium</p>
+        
+        <!-- Dropdown Varian -->
+    <label class="fw-bold">Varian:</label>
+    <select class="form-select w-50 mb-3" id="variant-mocha-latte">
+      <option value="Hot">Hot</option>
+      <option value="Cold">Cold</option>
+    </select>
+
+    <button class="btn btn-outline-dark" onclick="addToCartWithVariant('Mocha Latte', 22000, 'variant-mocha-latte')">
+      Add to Cart
+    </button>
+  </div>
     </div>
 
     <!-- Product 3 -->
@@ -95,15 +117,95 @@
         <img src="assets/img/products-03.jpg" class="img-fluid rounded shadow" alt="Chill & Choco Series">
       </div>
       <div class="col-md-6">
-        <h2 class="section-heading mb-3">Macha Latte</h2>
-        <p>Segar, ringan, tapi tetap rich dengan cita rasa cokelat dan kopi yang khas. Cocok dinikmati kapan saja untuk menambah mood positif.</p>
+        <h2 class="section-heading mb-3">Matcha Latte</h2>
+        <p>Matcha premium dengan rasa fresh, earthy, dan sedikit creamy. Ringan tapi tetap rich. Mood booster yang enak diminum kapan saja.</p>
         <p><strong>Harga:</strong> Rp25.000</p>
-        <button class="btn btn-outline-dark mt-auto" onclick="addToCart('Macha Latte', 25000)">Add to Cart</button>
-      </div>
-    </div>
-  </div>
-</section>
+        <p><strong>Ukuran:</strong> Medium</p>
+        
+        <!-- Dropdown Varian -->
+    <label class="fw-bold">Varian:</label>
+    <select class="form-select w-50 mb-3" id="variant-mocha-latte">
+      <option value="Hot">Hot</option>
+      <option value="Cold">Cold</option>
+    </select>
 
+    <button class="btn btn-outline-dark" onclick="addToCartWithVariant('Mocha Latte', 22000, 'variant-mocha-latte')">
+      Add to Cart
+    </button>
+  </div>
+    </div>
+
+    <!-- Product 4 -->
+    <div class="row align-items-center mb-5">
+      <div class="col-md-6">
+        <img src="assets/img/products-03.jpg" class="img-fluid rounded shadow" alt="Chill & Choco Series">
+      </div>
+      <div class="col-md-6">
+        <h2 class="section-heading mb-3">Cookies & Cream Coffe</h2>
+        <p>Kopi arabika dengan campuran krim lembut dan crumble cookies manis. Rasa playful tapi tetap punya karakter kopi yang terasa.</p>
+        <p><strong>Harga:</strong> Rp30.000</p>
+        <p><strong>Ukuran:</strong> Medium</p>
+        
+        <!-- Dropdown Varian -->
+    <label class="fw-bold">Varian:</label>
+    <select class="form-select w-50 mb-3" id="variant-mocha-latte">
+      <option value="Cold">Cold</option>
+    </select>
+
+    <button class="btn btn-outline-dark" onclick="addToCartWithVariant('Mocha Latte', 22000, 'variant-mocha-latte')">
+      Add to Cart
+    </button>
+  </div>
+    </div>
+
+    <!-- Product 5 -->
+    <div class="row align-items-center mb-5">
+      <div class="col-md-6">
+        <img src="assets/img/products-03.jpg" class="img-fluid rounded shadow" alt="Chill & Choco Series">
+      </div>
+      <div class="col-md-6">
+        <h2 class="section-heading mb-3">Coffee Gula Aren</h2>
+        <p> Kopi dengan rasa bold yang dipadu gula aren asli. Manisnya lembut, gak nyelekit. Aromanya harum khas gula aren, aftertaste-nya bersih dan enak diminum setiap hari.</p>
+        <p><strong>Harga:</strong> Rp21.000</p>
+        <p><strong>Ukuran:</strong> Medium</p>
+        
+        <!-- Dropdown Varian -->
+    <label class="fw-bold">Varian:</label>
+    <select class="form-select w-50 mb-3" id="variant-mocha-latte">
+      <option value="Hot">Hot</option>
+      <option value="Cold">Cold</option>
+    </select>
+
+    <button class="btn btn-outline-dark" onclick="addToCartWithVariant('Mocha Latte', 22000, 'variant-mocha-latte')">
+      Add to Cart
+    </button>
+  </div>
+    </div>
+
+    
+<!-- Product 6 -->
+    <div class="row align-items-center mb-5">
+      <div class="col-md-6">
+        <img src="assets/img/products-03.jpg" class="img-fluid rounded shadow" alt="Chill & Choco Series">
+      </div>
+      <div class="col-md-6">
+        <h2 class="section-heading mb-3">Iced Mocha Frappe</h2>
+        <p>Campuran kopi, susu, cokelat, dan es yang diblender jadi satu. Teksturnya creamy dingin segar, cocok buat cuaca panas atau buat yang doyan rasa manis-coklat tapi segar.</p>
+        <p><strong>Harga:</strong> Rp26.000</p>
+        <p><strong>Ukuran:</strong> Medium</p>
+        
+        <!-- Dropdown Varian -->
+    <label class="fw-bold">Varian:</label>
+    <select class="form-select w-50 mb-3" id="variant-mocha-latte">
+      <option value="Cold">Cold</option>
+    </select>
+
+    <button class="btn btn-outline-dark" onclick="addToCartWithVariant('Mocha Latte', 22000, 'variant-mocha-latte')">
+      Add to Cart
+    </button>
+  </div>
+    </div>
+    
 <footer class="footer text-faded text-center py-5">
   <div class="container"><p class="m-0 small">© Mocha Caffe 2025</p></div>
 </footer>
@@ -175,6 +277,20 @@
     cartModal.show();
   });
 </script>
+<script>
+function addToCartWithVariant(name, price, variantSelectId) {
+  const variant = document.getElementById(variantSelectId).value;
 
+  const item = {
+    name: `${name} (${variant})`,
+    price: price
+  };
+
+  cart.push(item);
+  localStorage.setItem('cart', JSON.stringify(cart));
+  updateCartDisplay();
+}
+</script>
+  
 </body>
 </html>
