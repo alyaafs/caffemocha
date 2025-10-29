@@ -217,20 +217,17 @@
 <script>
   let cart = [];
 
-  function addToCart(name, price) {
-    const existingItem = cart.find(item => item.name === name);
-    if (existingItem) {
-      existingItem.quantity += 1;
-    } else {
-      cart.push({ name, price, quantity: 1 });
-    }
-    updateCartDisplay();
+  function addToCartWithVariant(productName, price, variantSelectId) {
+  const variant = document.getElementById(variantSelectId).value;
+  addToCart(`${productName} (${variant})`, price);
   }
 
   function updateCartDisplay() {
     const cartCount = document.getElementById("cart-count");
     const cartItems = document.getElementById("cartItems");
     const cartTotal = document.getElementById("cartTotal");
+   
+  
 
     cartItems.innerHTML = "";
     let total = 0;
