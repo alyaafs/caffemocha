@@ -2,42 +2,27 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>MOCHA CAFFE</title>
+
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet" />
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
 </head>
 
 <body>
-  <header>
-    <h1 class="site-heading text-center text-faded d-none d-lg-block">
-      <span class="site-heading-upper text-primary mb-3">“Whatever your mood, there’s a Mocha for it.”</span>
-      <span class="site-heading-lower">MOCHA CAFFE</span>
-    </h1>
-  </header>
 
-<!-- Navigation -->
-<nav class="navbar navbar-expand-lg navbar-dark py-lg-4" id="mainNav">
-  <div class="container">
-    <a class="navbar-brand text-uppercase fw-bold d-lg-none" href="index.html">Mocha Caffe</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" 
-      aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarResponsive">
-      <ul class="navbar-nav mx-auto">
-        <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="index.html">Home</a></li>
-        <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="products.html">Products</a></li>
-        <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="store.html">Store</a></li>
-      </ul>
-    </div>
+<header class="text-center py-5">
+  <h1 class="fw-bold">MOCHA CAFFE</h1>
+  <p class="text-muted">Whatever your mood, there's a Mocha for it.</p>
+</header>
 
-    <!-- ICON KERANJANG -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark px-4">
+  <a class="navbar-brand text-uppercase fw-bold" href="#">Mocha Caffe</a>
+  <div class="ms-auto">
     <button class="btn btn-outline-light position-relative" id="cart-btn">
       <i class="bi bi-cart3 fs-5"></i>
-      <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="cart-count">0</span>
+      <span id="cart-count" class="badge bg-danger position-absolute top-0 start-100 translate-middle">0</span>
     </button>
   </div>
 </nav>
@@ -59,248 +44,220 @@
   </div>
 </div>
 
-<!-- PRODUCT LIST -->
-<section class="page-section">
-  <div class="container">
-    
-    <!-- Product 1 -->
-    <div class="row align-items-center mb-5">
-      <div class="col-md-6">
-        <img src="assets/img/products-01.jpg" class="img-fluid rounded shadow" alt="Mocha Mood Original Series">
-      </div>
-      <div class="col-md-6">
-        <h2 class="section-heading mb-3">Mocha Latte</h2>
-        <p>Perpaduan seimbang antara kopi arabika pilihan dan cokelat premium. Rasa kopi tetap terasa, tapi lembut dengan sentuhan manis cokelat yang bikin hangat dan comforting.</p>
-        <p><strong>Harga:</strong> Rp22.000</p>
-        <p><strong>Ukuran:</strong> Medium</p>
-        
-        <!-- Dropdown Varian -->
-    <label class="fw-bold">Varian:</label>
-    <select class="form-select w-50 mb-3" id="variant-mocha-latte">
-      <option value="Hot">Hot</option>
-      <option value="Cold">Cold</option>
-    </select>
+<section class="container py-5">
+  <div class="row g-4">
 
-    <button class="add-to-cart" 
-        data-name="Mocha Latte (Cold)" 
-        data-price="22000">
-    Add to Cart
-</button>
-  </div>
+    <!-- 1. Mocha Latte -->
+    <div class="col-md-4">
+      <div class="card p-3 shadow-sm">
+        <img src="assets/img/products-01.jpg" class="card-img-top rounded">
+        <h5 class="mt-3 fw-bold">Mocha Latte</h5>
+        <p>Perpaduan kopi arabika & cokelat premium dengan rasa lembut dan comforting.</p>
+        <p class="fw-semibold">Rp22.000</p>
+
+        <label class="fw-semibold">Varian:</label>
+        <select class="form-select mb-2 variant-select">
+          <option value="Hot">Hot</option>
+          <option value="Cold">Cold</option>
+        </select>
+
+        <label class="fw-semibold">Ukuran:</label>
+        <select class="form-select mb-3 size-select">
+          <option value="Medium" data-add="0">Medium</option>
+          <option value="Large" data-add="6000">Large (+6K)</option>
+        </select>
+
+        <button class="btn btn-dark w-100 add-cart-btn" data-name="Mocha Latte" data-price="22000">Add to Cart</button>
+      </div>
     </div>
 
-    <!-- Product 2 -->
-    <div class="row align-items-center mb-5 flex-md-row-reverse">
-      <div class="col-md-6">
-        <img src="assets/img/products-02.jpg" class="img-fluid rounded shadow" alt="Creamy Indulgence Series">
-      </div>
-      <div class="col-md-6">
-        <h2 class="section-heading mb-3">Caramel Creamy Latte</h2>
-        <p>Susu creamy yang dipadu dengan karamel lembut, menghasilkan rasa manis-asin tipis yang pas. Cocok buat kamu yang suka minuman manis tapi tetap smooth.</p>
-        <p><strong>Harga:</strong> Rp24.000</p>
-        <p><strong>Ukuran:</strong> Medium</p>
-        
-        <!-- Dropdown Varian -->
-    <label class="fw-bold">Varian:</label>
-    <select class="form-select w-50 mb-3" id="variant-mocha-latte">
-      <option value="Hot">Hot</option>
-      <option value="Cold">Cold</option>
-    </select>
 
-    <button class="btn btn-outline-dark" onclick="addToCartWithVariant('Mocha Latte', 22000, 'variant-mocha-latte')">
-      Add to Cart
-    </button>
-  </div>
+    <!-- 2. Caramel Creamy Latte -->
+    <div class="col-md-4">
+      <div class="card p-3 shadow-sm">
+        <img src="assets/img/products-02.jpg" class="card-img-top rounded">
+        <h5 class="mt-3 fw-bold">Caramel Creamy Latte</h5>
+        <p>Susu creamy dengan karamel lembut. Sweet, smooth, comforting.</p>
+        <p class="fw-semibold">Rp24.000</p>
+
+        <select class="form-select mb-2 variant-select">
+          <option value="Hot">Hot</option>
+          <option value="Cold">Cold</option>
+        </select>
+
+        <select class="form-select mb-3 size-select">
+          <option value="Medium" data-add="0">Medium</option>
+          <option value="Large" data-add="6000">Large (+6K)</option>
+        </select>
+
+        <button class="btn btn-dark w-100 add-cart-btn" data-name="Caramel Creamy Latte" data-price="24000">Add to Cart</button>
+      </div>
     </div>
 
-    <!-- Product 3 -->
-    <div class="row align-items-center mb-5">
-      <div class="col-md-6">
-        <img src="assets/img/products-03.jpg" class="img-fluid rounded shadow" alt="Chill & Choco Series">
-      </div>
-      <div class="col-md-6">
-        <h2 class="section-heading mb-3">Matcha Latte</h2>
-        <p>Matcha premium dengan rasa fresh, earthy, dan sedikit creamy. Ringan tapi tetap rich. Mood booster yang enak diminum kapan saja.</p>
-        <p><strong>Harga:</strong> Rp25.000</p>
-        <p><strong>Ukuran:</strong> Medium</p>
-        
-        <!-- Dropdown Varian -->
-    <label class="fw-bold">Varian:</label>
-    <select class="form-select w-50 mb-3" id="variant-mocha-latte">
-      <option value="Hot">Hot</option>
-      <option value="Cold">Cold</option>
-    </select>
 
-    <button class="btn btn-outline-dark" onclick="addToCartWithVariant('Mocha Latte', 22000, 'variant-mocha-latte')">
-      Add to Cart
-    </button>
-  </div>
+    <!-- 3. Matcha Latte -->
+    <div class="col-md-4">
+      <div class="card p-3 shadow-sm">
+        <img src="assets/img/products-03.jpg" class="card-img-top rounded">
+        <h5 class="mt-3 fw-bold">Matcha Latte</h5>
+        <p>Matcha premium, creamy, clean. Fresh mood booster.</p>
+        <p class="fw-semibold">Rp25.000</p>
+
+        <select class="form-select mb-2 variant-select">
+          <option value="Hot">Hot</option>
+          <option value="Cold">Cold</option>
+        </select>
+
+        <select class="form-select mb-3 size-select">
+          <option value="Medium" data-add="0">Medium</option>
+          <option value="Large" data-add="6000">Large (+6K)</option>
+        </select>
+
+        <button class="btn btn-dark w-100 add-cart-btn" data-name="Matcha Latte" data-price="25000">Add to Cart</button>
+      </div>
     </div>
 
-    <!-- Product 4 -->
-    <div class="row align-items-center mb-5">
-      <div class="col-md-6">
-        <img src="assets/img/products-03.jpg" class="img-fluid rounded shadow" alt="Chill & Choco Series">
-      </div>
-      <div class="col-md-6">
-        <h2 class="section-heading mb-3">Cookies & Cream Coffe</h2>
-        <p>Kopi arabika dengan campuran krim lembut dan crumble cookies manis. Rasa playful tapi tetap punya karakter kopi yang terasa.</p>
-        <p><strong>Harga:</strong> Rp30.000</p>
-        <p><strong>Ukuran:</strong> Medium</p>
-        
-        <!-- Dropdown Varian -->
-    <label class="fw-bold">Varian:</label>
-    <select class="form-select w-50 mb-3" id="variant-mocha-latte">
-      <option value="Cold">Cold</option>
-    </select>
 
-    <button class="btn btn-outline-dark" onclick="addToCartWithVariant('Mocha Latte', 22000, 'variant-mocha-latte')">
-      Add to Cart
-    </button>
-  </div>
+    <!-- 4. Cookies & Cream Coffee -->
+    <div class="col-md-4">
+      <div class="card p-3 shadow-sm">
+        <img src="assets/img/products-04.jpg" class="card-img-top rounded">
+        <h5 class="mt-3 fw-bold">Cookies & Cream Coffee</h5>
+        <p>Kopi creamy dengan crumble cookies. Playful & bold.</p>
+        <p class="fw-semibold">Rp30.000</p>
+
+        <select class="form-select mb-2 variant-select">
+          <option value="Cold">Cold</option>
+        </select>
+
+        <select class="form-select mb-3 size-select">
+          <option value="Medium" data-add="0">Medium</option>
+          <option value="Large" data-add="6000">Large (+6K)</option>
+        </select>
+
+        <button class="btn btn-dark w-100 add-cart-btn" data-name="Cookies & Cream Coffee" data-price="30000">Add to Cart</button>
+      </div>
     </div>
 
-    <!-- Product 5 -->
-    <div class="row align-items-center mb-5">
-      <div class="col-md-6">
-        <img src="assets/img/products-03.jpg" class="img-fluid rounded shadow" alt="Chill & Choco Series">
-      </div>
-      <div class="col-md-6">
-        <h2 class="section-heading mb-3">Coffee Gula Aren</h2>
-        <p> Kopi dengan rasa bold yang dipadu gula aren asli. Manisnya lembut, gak nyelekit. Aromanya harum khas gula aren, aftertaste-nya bersih dan enak diminum setiap hari.</p>
-        <p><strong>Harga:</strong> Rp21.000</p>
-        <p><strong>Ukuran:</strong> Medium</p>
-        
-        <!-- Dropdown Varian -->
-    <label class="fw-bold">Varian:</label>
-    <select class="form-select w-50 mb-3" id="variant-mocha-latte">
-      <option value="Hot">Hot</option>
-      <option value="Cold">Cold</option>
-    </select>
 
-    <button class="btn btn-outline-dark" onclick="addToCartWithVariant('Mocha Latte', 22000, 'variant-mocha-latte')">
-      Add to Cart
-    </button>
-  </div>
+    <!-- 5. Coffee Gula Aren -->
+    <div class="col-md-4">
+      <div class="card p-3 shadow-sm">
+        <img src="assets/img/products-05.jpg" class="card-img-top rounded">
+        <h5 class="mt-3 fw-bold">Coffee Gula Aren</h5>
+        <p>Kopi bold + gula aren asli. Manis lembut, aromatik, everyday coffee.</p>
+        <p class="fw-semibold">Rp21.000</p>
+
+        <select class="form-select mb-2 variant-select">
+          <option value="Hot">Hot</option>
+          <option value="Cold">Cold</option>
+        </select>
+
+        <select class="form-select mb-3 size-select">
+          <option value="Medium" data-add="0">Medium</option>
+          <option value="Large" data-add="6000">Large (+6K)</option>
+        </select>
+
+        <button class="btn btn-dark w-100 add-cart-btn" data-name="Coffee Gula Aren" data-price="21000">Add to Cart</button>
+      </div>
     </div>
 
-    
-<!-- Product 6 -->
-    <div class="row align-items-center mb-5">
-      <div class="col-md-6">
-        <img src="assets/img/products-03.jpg" class="img-fluid rounded shadow" alt="Chill & Choco Series">
-      </div>
-      <div class="col-md-6">
-        <h2 class="section-heading mb-3">Iced Mocha Frappe</h2>
-        <p>Campuran kopi, susu, cokelat, dan es yang diblender jadi satu. Teksturnya creamy dingin segar, cocok buat cuaca panas atau buat yang doyan rasa manis-coklat tapi segar.</p>
-        <p><strong>Harga:</strong> Rp26.000</p>
-        <p><strong>Ukuran:</strong> Medium</p>
-        
-        <!-- Dropdown Varian -->
-    <label class="fw-bold">Varian:</label>
-    <select class="form-select w-50 mb-3" id="variant-mocha-latte">
-      <option value="Cold">Cold</option>
-    </select>
 
-    <button class="btn btn-outline-dark" onclick="addToCartWithVariant('Mocha Latte', 22000, 'variant-mocha-latte')">
-      Add to Cart
-    </button>
-  </div>
+    <!-- 6. Iced Mocha Frappe -->
+    <div class="col-md-4">
+      <div class="card p-3 shadow-sm">
+        <img src="assets/img/products-06.jpg" class="card-img-top rounded">
+        <h5 class="mt-3 fw-bold">Iced Mocha Frappe</h5>
+        <p>Kopi + coklat + susu diblender creamy dingin. Fresh & sweet.</p>
+        <p class="fw-semibold">Rp26.000</p>
+
+        <select class="form-select mb-2 variant-select">
+          <option value="Cold">Cold</option>
+        </select>
+
+        <select class="form-select mb-3 size-select">
+          <option value="Medium" data-add="0">Medium</option>
+          <option value="Large" data-add="6000">Large (+6K)</option>
+        </select>
+
+        <button class="btn btn-dark w-100 add-cart-btn" data-name="Iced Mocha Frappe" data-price="26000">Add to Cart</button>
+      </div>
     </div>
-    
-<footer class="footer text-faded text-center py-5">
-  <div class="container"><p class="m-0 small">© Mocha Caffe 2025</p></div>
+
+  </div>
+</section>
+
+<footer class="text-center py-4 text-muted">
+  © Mocha Caffe 2025
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
-  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-  function updateCartDisplay() {
-    const cartCount = document.getElementById("cart-count");
-    const cartItems = document.getElementById("cartItems");
-    const cartTotal = document.getElementById("cartTotal");
+function updateCartDisplay() {
+  const cartItems = document.getElementById("cartItems");
+  const cartTotal = document.getElementById("cartTotal");
+  const cartCount = document.getElementById("cart-count");
 
-    cartItems.innerHTML = "";
-    let total = 0;
-    let totalItems = 0;
+  cartItems.innerHTML = "";
+  let total = 0, totalItems = 0;
 
-    cart.forEach((item, index) => {
-      const itemTotal = item.price * item.quantity;
-      total += itemTotal;
-      totalItems += item.quantity;
+  cart.forEach((item, i) => {
+    let sub = item.price * item.quantity;
+    total += sub; totalItems += item.quantity;
 
-      const row = document.createElement("div");
-      row.classList.add("d-flex", "justify-content-between", "align-items-center", "mb-2");
-      row.innerHTML = `
-        <span>${item.name} (${item.size}) x${item.quantity}</span>
+    cartItems.innerHTML += `
+      <div class="d-flex justify-content-between mb-2">
+        <span>${item.name} (${item.variant}, ${item.size}) x${item.quantity}</span>
         <div>
-          <span>Rp${itemTotal.toLocaleString("id-ID")}</span>
-          <button class="btn btn-sm btn-outline-danger ms-2" onclick="removeItem(${index})">x</button>
+          Rp${sub.toLocaleString("id-ID")}
+          <button class="btn btn-sm btn-danger ms-2" onclick="removeItem(${i})">x</button>
         </div>
-      `;
-      cartItems.appendChild(row);
-    });
-
-    cartCount.textContent = totalItems;
-    cartTotal.textContent = `Total: Rp${total.toLocaleString("id-ID")}`;
-    localStorage.setItem("cart", JSON.stringify(cart));
-  }
-
-  function removeItem(index) {
-    cart.splice(index, 1);
-    updateCartDisplay();
-  }
-
-  document.getElementById("checkoutBtn").addEventListener("click", () => {
-    if (cart.length === 0) {
-      alert("Keranjang masih kosong!");
-      return;
-    }
-    alert("Terima kasih! Pesananmu sedang diproses.");
-    cart = [];
-    updateCartDisplay();
-    const cartModal = bootstrap.Modal.getInstance(document.getElementById("cartModal"));
-    cartModal.hide();
+      </div>`;
   });
 
-  document.getElementById("cart-btn").addEventListener("click", () => {
-    const cartModal = new bootstrap.Modal(document.getElementById("cartModal"));
-    cartModal.show();
-  });
+  cartCount.textContent = totalItems;
+  cartTotal.textContent = Total: Rp${total.toLocaleString("id-ID")};
+  localStorage.setItem("cart", JSON.stringify(cart));
+}
 
-  function addToCartWithVariant(name, basePrice, variantSelectId, sizeSelectId) {
-    const variant = document.getElementById(variantSelectId).value;
-    const size = document.getElementById(sizeSelectId).value;
-
-    // Harga tambahan sesuai ukuran
-    let price = basePrice;
-    if (size === "Large") {
-      price += 6000; // Bisa kamu ganti sesuai harga kamu
-    }
-
-    // Cek jika produk + variant + size sudah ada → tambah quantity
-    const existingItem = cart.find(item => item.name === name && item.variant === variant && item.size === size);
-
-    if (existingItem) {
-      existingItem.quantity += 1;
-    } else {
-      cart.push({
-        name,
-        variant,
-        size,
-        price,
-        quantity: 1
-      });
-    }
-
-    updateCartDisplay();
-  }
-
+function removeItem(i) {
+  cart.splice(i, 1);
   updateCartDisplay();
+}
+
+document.querySelectorAll(".add-cart-btn").forEach(btn => {
+  btn.addEventListener("click", function(){
+    let name = this.dataset.name;
+    let price = parseInt(this.dataset.price);
+    let variant = this.parentElement.querySelector(".variant-select").value;
+    let sizeSelect = this.parentElement.querySelector(".size-select");
+    let size = sizeSelect.value;
+    let add = parseInt(sizeSelect.selectedOptions[0].dataset.add);
+    price += add;
+
+    const exist = cart.find(i => i.name === name && i.variant === variant && i.size === size);
+    if(exist) exist.quantity++;
+    else cart.push({name, variant, size, price, quantity: 1});
+    
+    updateCartDisplay();
+  });
+});
+
+document.getElementById("cart-btn").onclick = () =>
+  new bootstrap.Modal(document.getElementById("cartModal")).show();
+
+document.getElementById("checkoutBtn").onclick = () => {
+  if(cart.length === 0) return alert("Keranjang kosong.");
+  alert("Pesanan diproses ✅");
+  cart = [];
+  updateCartDisplay();
+};
+
+updateCartDisplay();
 </script>
 
-  
 </body>
 </html>
